@@ -87,6 +87,19 @@ The `BUZZ` keyword selects mode 2, which handles input and output.
 
 _TODO_: implement storage location references for I/O
 
+I/O example:
+
+```
+// requests input and stores it at the current location
+BUZZ FIZZBUZZ
+// prints out the number
+BUZZ FIZZ
+// prints out the ASCII representation of the number
+BUZZ BUZZ
+// end the program
+FIZZBUZZ FIZZBUZZ
+```
+
 ## Mode 3 - Flow Control
 
 The `FIZZBUZZ` keyword selects mode 3, flow control mode.
@@ -100,6 +113,8 @@ The `FIZZBUZZ` keyword selects mode 3, flow control mode.
 | FIZZBUZZ | Ends the program |
 
 The label name can contain anything you want, except whitespace characters. Convention (which I've just made up) says that it should be a combination of FIZZ and BUZZ
+
+All programs must end with `FIZZBUZZ FIZZBUZZ`
 
 Flow control example:
 
@@ -139,4 +154,6 @@ Bear in mind that the bits that should be working probably aren't - or work in u
 
 ## Contributing
 
-FizzBuzzLang is released under the GPL, which means you are encouraged to extend and modify the software. Personally, I really want you to! There is much left to implement, and I'd really like to see someone write an actual FizzBuzz implementation in FizzBuzzLang.
+FizzBuzzLang is released under the GPL, which means you are encouraged to extend and modify the software. Personally, I really want you to! There is much left to implement, and I'd really like to see someone write an actual FizzBuzz implementation in FizzBuzzLang - or just see how complex we can get. Since my implementation of Hello World runs to 133 lines, I'd be interested to see if compact programs can be made.
+
+_Matt Rudge, January 2020_
