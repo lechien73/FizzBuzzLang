@@ -1,0 +1,13 @@
+// set the current location value to 2
+FIZZ BUZZ FIZZ
+FIZZ BUZZ FIZZ
+// create a label called FIZZBUZZBUZZ
+FIZZBUZZ FIZZ FIZZBUZZBUZZ
+// print the current location value
+BUZZ FIZZ
+// decrement the value at the current location by 1
+FIZZ BUZZ BUZZ
+// jump back to the label if the location value is not 0
+FIZZBUZZ BUZZ FIZZ FIZZBUZZBUZZ
+// end the program
+FIZZBUZZ FIZZBUZZ
