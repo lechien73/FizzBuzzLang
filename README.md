@@ -6,7 +6,7 @@ It's the language no one asked for, and never missed before it existed. But that
 
 FizzBuzzLang is a Turing-complete programming language based on the classic interview challenge, FizzBuzz. It is possible to write FizzBuzz in FizzBuzzLang, but you run the risk of ending up in a very deep Turing-tarpit.
 
-FizzBuzzLang is an imperative language, and each statement must be on its own line. Here is an implementation of Hello World in FizzBuzzLang.
+FizzBuzzLang is an imperative language, and each statement must be on its own line. <a href="https://raw.githubusercontent.com/lechien73/FizzBuzzLang/master/hello.fb" target="_blank">Here is an implementation of Hello World in FizzBuzzLang.</a>
 
 It has just three keywords: FIZZ, BUZZ and FIZZBUZZ, and code is written as an Instruction Modification Parameter (IMP).
 
