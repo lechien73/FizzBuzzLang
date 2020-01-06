@@ -79,13 +79,14 @@ Alternatively, we can use the location names in along with the arithmetic functi
 
 The `BUZZ` keyword selects mode 2, which handles input and output.
 
-| Keyword | Meaning |
-|:--------|:----------|
-| FIZZ    | Outputs the number at the current data-space location |
-| BUZZ    | Outputs the character representation of the number at the current location |
-| FIZZBUZZ | Accepts input of an integer, and stores it at the current data-space location |
+| Keyword | Optional Arguments | Meaning |
+|:--------|:----------|:----------|
+| FIZZ    | FIZZ or BUZZ | Outputs the number at the current data-space location or storage location |
+| BUZZ    | FIZZ or BUZZ |Outputs the character representation of the number at the current location or storage location |
+| FIZZBUZZ | | Accepts input of an integer, and stores it at the current data-space location |
+| FIZZBUZZ | FIZZBUZZ | Allows input of a binary coded number, which is stored at the current data-space location |
 
-_TODO_: implement storage location references for I/O
+FizzBuzzLang allows entry of a binary coded number to be stored at the current data-space location. The format of the number is FIZZ for 0 and BUZZ for 1. So, to store the binary number 1001000 (which is 72 in decimal), you would use the following code: `BUZZ FIZZBUZZ FIZZBUZZ BUZZ FIZZ FIZZ BUZZ FIZZ FIZZ FIZZ`
 
 I/O example:
 
@@ -154,6 +155,6 @@ Bear in mind that the bits that should be working probably aren't - or work in u
 
 ## Contributing
 
-FizzBuzzLang is released under the GPL, which means you are encouraged to extend and modify the software. Personally, I really want you to! There is much left to implement, and I'd really like to see someone write an actual FizzBuzz implementation in FizzBuzzLang - or just see how complex we can get. Since my implementation of Hello World runs to 133 lines, I'd be interested to see if compact programs can be made.
+FizzBuzzLang is released under the GPL, which means you are encouraged to extend and modify the software. Personally, I really want you to! There is much left to implement, and I'd really like to see someone write an actual FizzBuzz implementation in FizzBuzzLang - or just see how complex we can get. I'd be interested to see if compact programs can be made.
 
 _Matt Rudge, January 2020_

@@ -93,19 +93,29 @@ class FizzBuzzLang(object):
 
         return
     
-    def op_io(self, submode):
+    def op_io(self, submode, args):
+        stored_loc = self.sp
+        locargs = True if len(args) > 1 else False
+        if locargs:
+            stored_loc = self.stored_sp1 if args[0] == "FIZZ" else self.stored_sp2
         if submode == 1:
-            print(self.stack[self.sp])
+            print(self.stack[stored_loc])
         elif submode == 2:
-            print(chr(self.stack[self.sp]), end="")
+            print(chr(self.stack[stored_loc]), end="")
         elif submode == 3:
-            inputnum = 0
-            try:
-                inputnum = int(input("> "))       
-            except ValueError:
-                print("Error: Must be an integer!")
-                return
-            self.stack[self.sp] = inputnum
+            if locargs and args[0] == "FIZZBUZZ":
+                varnum = ""
+                for fb in args[1:]:
+                    varnum = varnum + "0" if fb == "FIZZ" else varnum + "1"
+                self.stack[self.sp] = int(varnum, 2)
+            else:
+                inputnum = 0
+                try:
+                    inputnum = int(input("> "))       
+                except ValueError:
+                    print("Error: Must be an integer!")
+                    return
+                self.stack[self.sp] = inputnum
         
         return
 
@@ -147,7 +157,7 @@ class FizzBuzzLang(object):
                 self.op_stack(submode, args)
                 self.ip += 1
             elif mode == 2:
-                self.op_io(submode)
+                self.op_io(submode, args)
                 self.ip += 1
             elif mode == 3:
                 bv = self.op_flow(submode, args)
