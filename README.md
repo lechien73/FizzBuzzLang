@@ -145,7 +145,7 @@ FIZZBUZZ FIZZBUZZ
 
 ## General
 
-FizzBuzzLang can be used to create complex(ish) programs. It can be used for loops, arithmetic, conditional branching and has rudimentary variable storage.
+FizzBuzzLang can be used to create complex(ish) programs. <a href="https://medium.com/@mrudge/introducing-fizzbuzzlang-ad2b2613178e?" target="_blank">Here's the Medium article.</a> It can be used for loops, arithmetic, conditional branching and has rudimentary variable storage.
 
 Any line not beginning with FIZZ, BUZZ or FIZZBUZZ is ignored, so it can be used to make an (ugly) polyglot.
 
