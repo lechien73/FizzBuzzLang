@@ -2,7 +2,15 @@
 ## The FizzBuzz Esoteric Programming Language
 I firmly believe that most esoteric programming languages are the result of the affect of alcohol on the brains of carbon-based life forms. FizzBuzzLang is no different!
 
-It's the language no one asked for, and never missed before it existed. But that didn't stop me creating it.
+It's the language no one asked for, and never missed before it existed. But that didn't stop me creating it. Mainly because I dearly want a tech interview sometime, somewhere to go like this:
+
+_Interviewer:_ Ok, can you write FizzBuzz for us?  
+_Dev:_ Sure, what do you want me to write?  
+_Interviewer:_ Ummmm…FizzBuzz?  
+_Dev:_ Yes, but what? Hello World? An I/O example?  
+_Interviewer:_ (look of confusion creeps across their face)
+
+Ok, that might never happen, but (along with the whiskey I was drinking) it was enough to amuse me.
 
 FizzBuzzLang is a Turing-complete programming language based on the classic interview challenge, FizzBuzz. It is possible to write FizzBuzz in FizzBuzzLang, but you run the risk of ending up in a very deep Turing-tarpit.
 
