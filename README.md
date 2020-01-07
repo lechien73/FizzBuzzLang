@@ -4,11 +4,11 @@ I firmly believe that most esoteric programming languages are the result of the 
 
 It's the language no one asked for, and never missed before it existed. But that didn't stop me creating it. Mainly because I dearly want a tech interview sometime, somewhere to go like this:
 
-_Interviewer:_ Ok, can you write FizzBuzz for us?
-_Dev:_ Sure, what do you want me to write?
-_Interviewer:_ Ummmm…FizzBuzz?
-_Dev:_ Yes, but what? Hello World? An I/O example?
-_Interviewer:_ (look of confusion creeps across their face)
+_Interviewer:_ Ok, can you write FizzBuzz for us?  
+_Dev:_ Sure, what do you want me to write?  
+_Interviewer:_ Ummmm…FizzBuzz?  
+_Dev:_ Yes, but what? Hello World? An I/O example?  
+_Interviewer:_ (look of confusion creeps across their face)  
 
 Ok, that might never happen, but (along with the whiskey I was drinking) it was enough to amuse me.
 
