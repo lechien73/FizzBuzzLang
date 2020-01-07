@@ -1,4 +1,4 @@
-"""       
+"""
     FizzBuzzLang Interpreter
     Copyright (C) 2020 Matt Rudge (mrudge@gmail.com)
 
@@ -16,9 +16,10 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
+
 class FizzBuzzLang(object):
     """
-    The main class. Assume all methods are private except for run_file
+    The main class. All methods are private except for run_file
     """
     def __init__(self, *, debug=False):
         self.stack = [0]
@@ -28,60 +29,59 @@ class FizzBuzzLang(object):
         self.ip = 0
         self.labels = {}
         self.debug = debug
-   
-    def parse_tokens(self, line):
-        mode = 0
-        submode = 0
-        args = []
-        line = line.split(" ")
-        if line[0] == "FIZZ":
-            mode = 1
-        elif line[0] == "BUZZ":
-            mode = 2
-        elif line[0] == "FIZZBUZZ":
-            mode = 3
-        if line[1].rstrip() == "FIZZ":
-            submode = 1
-        elif line[1].rstrip() == "BUZZ":
-            submode = 2
-        elif line[1].rstrip() == "FIZZBUZZ":
-            submode = 3
-        if len(line) >= 3:
-            for arg in line[2:]:
-                args.append(arg.rstrip())
+
+    def _parse_tokens(self, line):
+        """Parse a single line into tokens
+        """        
+        tokens = line.split()
+        mode = {"FIZZ": 1, "BUZZ": 2, "FIZZBUZZ": 3}.get(tokens[0])
+        submode = {"FIZZ": 1, "BUZZ": 2, "FIZZBUZZ": 3}.get(tokens[1])
+        args = tokens[2:]
         return mode, submode, args
-    
-    def op_stack(self, submode, args):
+
+    def _op_stack(self, submode, args):
+        """Execute a Data-space manipulation operation
+        """
         if submode == 1:
             if args[0] == "FIZZ":
                 self.sp += 1
                 if len(self.stack) == self.sp:
                     self.stack.append(0)
             elif args[0] == "BUZZ":
-                self.sp = self.sp - 1 if self.sp > 0 else 0
+                self.sp = max(self.sp - 1, 0)
             elif args[0] == "FIZZBUZZ":
                 self.sp += 1
                 if len(self.stack) == self.sp:
                     self.stack.append(self.stack[self.sp-1])
                 else:
                     self.stack[self.sp] = self.stack[self.sp-1]
-        
+
         elif submode == 2:
-            locargs = True if len(args) > 1 else False
+            locargs = len(args) > 1
             if locargs:
-                stored_loc = self.stored_sp1 if args[1] == "FIZZ" else self.stored_sp2
+                if args[1] == "FIZZ":
+                    stored_loc = self.stored_sp1
+                else:
+                    stored_loc = self.stored_sp2
             if args[0] == "FIZZ":
-                self.stack[self.sp] = self.stack[self.sp] + self.stack[stored_loc] if locargs else self.stack[self.sp] + 1
+                if locargs:
+                    self.stack[self.sp] += self.stack[stored_loc]
+                else:
+                    self.stack[self.sp] += 1
             elif args[0] == "BUZZ":
-                self.stack[self.sp] = self.stack[self.sp] - self.stack[stored_loc] if locargs else self.stack[self.sp] - 1
+                if locargs:
+                    self.stack[self.sp] -= self.stack[stored_loc]
+                else:
+                    self.stack[self.sp] -= 1
             elif args[0] == "FIZZBUZZ":
                 if self.sp + 1 == len(self.stack):
                     self.stack.append(0)
                 if locargs:
-                    self.stack[self.sp + 1] = self.stack[self.sp] % self.stack[stored_loc]
+                    divisor = self.stack[stored_loc]
                 else:
-                    self.stack[self.sp + 1] = 0 if self.stack[self.sp] == 0 else self.stack[self.sp] % self.stack[self.sp - 1]
-                self.sp += 1                   
+                    divisor = self.stack[self.sp - 1]
+                self.stack[self.sp + 1] = self.stack[self.sp] % divisor
+                self.sp += 1
 
         elif submode == 3:
             if args[0] == "FIZZ":
@@ -89,37 +89,39 @@ class FizzBuzzLang(object):
             elif args[0] == "BUZZ":
                 self.stored_sp2 = self.sp
             elif args[0] == "FIZZBUZZ":
-                self.sp = self.stored_sp1 if args[1] == "FIZZ" else self.stored_sp2
+                if args[1] == "FIZZ":
+                    self.sp = self.stored_sp1
+                else:
+                    self.sp = self.stored_sp2
 
-        return
-    
     def op_io(self, submode, args):
+        """Execute an Input/Output operation
+        """
         stored_loc = self.sp
-        locargs = True if len(args) > 1 else False
+        locargs = len(args) > 1
         if locargs:
-            stored_loc = self.stored_sp1 if args[0] == "FIZZ" else self.stored_sp2
+            if args[1] == "FIZZ":
+                stored_loc = self.stored_sp1
+            else:
+                stored_loc = self.stored_sp2
         if submode == 1:
             print(self.stack[stored_loc])
         elif submode == 2:
             print(chr(self.stack[stored_loc]), end="")
         elif submode == 3:
             if locargs and args[0] == "FIZZBUZZ":
-                varnum = ""
-                for fb in args[1:]:
-                    varnum = varnum + "0" if fb == "FIZZ" else varnum + "1"
+                varnum = "".join("0" if fb == "FIZZ" else "1"
+                                 for fb in args[1:])
                 self.stack[self.sp] = int(varnum, 2)
             else:
-                inputnum = 0
                 try:
-                    inputnum = int(input("> "))       
+                    self.stack[self.sp] = int(input("> "))
                 except ValueError:
                     print("Error: Must be an integer!")
-                    return
-                self.stack[self.sp] = inputnum
-        
-        return
 
-    def op_flow(self, submode, args):
+    def _op_flow(self, submode, args):
+        """Execute a Flow Control operation
+        """
         if submode == 1:
             if args[0] not in self.labels:
                 self.labels[args[0]] = self.ip
@@ -128,20 +130,19 @@ class FizzBuzzLang(object):
             if args[1] not in self.labels:
                 print("Error: label does not exist!")
                 return
-            if (args[0] == "FIZZ" and self.stack[self.sp] != 0) or \
-               (args[0] == "BUZZ" and self.stack[self.sp] == 0) or \
-               (args[0] == "FIZZBUZZ"):
+            jump = (args[0] == "FIZZ" and self.stack[self.sp] != 0 or
+                    args[0] == "BUZZ" and self.stack[self.sp] == 0 or
+                    args[0] == "FIZZBUZZ")
+            if jump:
                 self.ip = self.labels[args[1]]
             else:
                 self.ip += 1
 
         if submode == 3:
             return 0
-    
+
     def run_file(self, filename):
-        """
-        Opens the file, parses the tokens and attempts to
-        execute it in FizzBuzzLang
+        """Parse the FizzBuzzLang script and attempt to execute it
         """
 
         with open(filename) as prog:
@@ -152,15 +153,15 @@ class FizzBuzzLang(object):
                 print("Error: Expected statement")
                 break
 
-            mode, submode, args = self.parse_tokens(code[self.ip])
+            mode, submode, args = self._parse_tokens(code[self.ip])
             if mode == 1:
-                self.op_stack(submode, args)
+                self._op_stack(submode, args)
                 self.ip += 1
             elif mode == 2:
                 self.op_io(submode, args)
                 self.ip += 1
             elif mode == 3:
-                bv = self.op_flow(submode, args)
+                bv = self._op_flow(submode, args)
                 if bv == 0:
                     break
             else:

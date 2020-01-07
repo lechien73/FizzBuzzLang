@@ -77,7 +77,7 @@ Let's imagine that our data-space looks like this:
 0002: 0
 0003: 45 <
 ```
-Our data-space pointer is at address 0003. The command `FIZZ FIZBUZZ FIZZ` will cause address 0003 to be stored in the FIZZ location.
+Our data-space pointer is at address 0003. The command `FIZZ FIZZBUZZ FIZZ` will cause address 0003 to be stored in the FIZZ location.
 
 If we want to jump to that location in the data-space, we can do so with the command: `FIZZ FIZZBUZZ FIZZBUZZ FIZZ`, which will cause the data-space pointer to move to the address stored in the `FIZZ` location.
 
