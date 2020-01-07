@@ -1,0 +1,4 @@
+// Some valid code
+FIZZ BUZZ FIZZ
+// Invalid submode:
+FIZZ foo FIZZBUZZ

@@ -1,0 +1,4 @@
+// Some valid code
+FIZZ BUZZ FIZZ
+// Invalid mode:
+foo BUZZ FIZZBUZZ
