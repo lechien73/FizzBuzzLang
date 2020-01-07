@@ -154,6 +154,7 @@ class FizzBuzzLang:
             if args[1] not in self.labels:
                 print("Error: label does not exist!")
                 return
+                
             jump = (args[0] == "FIZZ" and self.stack[self.sp] != 0 or
                     args[0] == "BUZZ" and self.stack[self.sp] == 0 or
                     args[0] == "FIZZBUZZ")
