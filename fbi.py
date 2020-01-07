@@ -118,7 +118,7 @@ class FizzBuzzLang:
                 else:
                     self.sp = self.stored_sp2
 
-    def op_io(self, submode, args):
+    def _op_io(self, submode, args):
         """Execute an Input/Output operation
         """
         stored_loc = self.sp
@@ -183,7 +183,7 @@ class FizzBuzzLang:
                 self._op_stack(submode, args)
                 self.ip += 1
             elif mode == 2:
-                self.op_io(submode, args)
+                self._op_io(submode, args)
                 self.ip += 1
             elif mode == 3:
                 bv = self._op_flow(submode, args)
