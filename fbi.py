@@ -17,7 +17,14 @@
 """
 
 
-class FizzBuzzLang(object):
+class FBSyntaxError(SyntaxError):
+    def __init__(self, line, filename="", linenum=1, token="", expected=""):
+        error = f"Expected {expected} token but got '{token}'"
+        colnum = line.index(token) + 1
+        super().__init__(error, (filename, linenum, colnum, line))
+
+
+class FizzBuzzLang:
     """
     The main class. All methods are private except for run_file
     """
@@ -30,13 +37,30 @@ class FizzBuzzLang(object):
         self.labels = {}
         self.debug = debug
 
-    def _parse_tokens(self, line):
+    def _parse_tokens(self, line, file, linenum):
         """Parse a single line into tokens
-        """        
+
+        The only permitted non-code lines are "//" comments and whitespace
+        """
+        if line.strip().startswith("//") or not line.strip():
+            return 0, 0, []
+
         tokens = line.split()
+
         mode = {"FIZZ": 1, "BUZZ": 2, "FIZZBUZZ": 3}.get(tokens[0])
+        if not mode:
+            raise FBSyntaxError(line, file, linenum, tokens[0], "mode")
+
         submode = {"FIZZ": 1, "BUZZ": 2, "FIZZBUZZ": 3}.get(tokens[1])
+        if not submode:
+            raise FBSyntaxError(line, file, linenum, tokens[1], "submode")
+
         args = tokens[2:]
+        for i, arg in enumerate(args):
+            is_label = mode == 3 and submode in (1, 2) and i == len(args)-1
+            if not is_label and arg not in ("FIZZ", "BUZZ", "FIZZBUZZ"):
+                raise FBSyntaxError(line, file, linenum, arg, "argument")
+
         return mode, submode, args
 
     def _op_stack(self, submode, args):
@@ -153,7 +177,8 @@ class FizzBuzzLang(object):
                 print("Error: Expected statement")
                 break
 
-            mode, submode, args = self._parse_tokens(code[self.ip])
+            mode, submode, args = self._parse_tokens(
+                code[self.ip], filename, self.ip)
             if mode == 1:
                 self._op_stack(submode, args)
                 self.ip += 1
