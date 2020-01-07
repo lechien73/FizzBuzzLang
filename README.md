@@ -169,7 +169,7 @@ FizzBuzzLang is released under the GPL, which means you are encouraged to extend
 
 ## Credits
 
-Yoni Lavi
-Matt Rudge
+Yoni Lavi  
+Matt Rudge  
 ___
-_Matt Rudge, January 2020_
+_Matt Rudge (https://fizzbuzzlang.com), January 2020_
