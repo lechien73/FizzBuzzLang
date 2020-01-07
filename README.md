@@ -4,10 +4,10 @@ I firmly believe that most esoteric programming languages are the result of the 
 
 It's the language no one asked for, and never missed before it existed. But that didn't stop me creating it. Mainly because I dearly want a tech interview sometime, somewhere to go like this:
 
-_Interviewer:_ Ok, can you write FizzBuzz for us?  
-_Dev:_ Sure, what do you want me to write?  
-_Interviewer:_ Ummmm…FizzBuzz?  
-_Dev:_ Yes, but what? Hello World? An I/O example?  
+_Interviewer:_ Ok, can you write FizzBuzz for us?
+_Dev:_ Sure, what do you want me to write?
+_Interviewer:_ Ummmm…FizzBuzz?
+_Dev:_ Yes, but what? Hello World? An I/O example?
 _Interviewer:_ (look of confusion creeps across their face)
 
 Ok, that might never happen, but (along with the whiskey I was drinking) it was enough to amuse me.
@@ -147,7 +147,7 @@ FIZZBUZZ FIZZBUZZ
 
 FizzBuzzLang can be used to create complex(ish) programs. <a href="https://medium.com/@mrudge/introducing-fizzbuzzlang-ad2b2613178e?" target="_blank">Here's the Medium article.</a> It can be used for loops, arithmetic, conditional branching and has rudimentary variable storage.
 
-Any line not beginning with FIZZ, BUZZ or FIZZBUZZ is ignored, so it can be used to make an (ugly) polyglot.
+Any non-whitespace lines must consist of either a valid FizzBuzzLang command or a comment beginning with `//`.
 
 The `fbi.py` file is a hacked-together FizzBuzzLang interpreter in Python. Use it as follows:
 
