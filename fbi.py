@@ -138,11 +138,18 @@ class FizzBuzzLang:
                                  for fb in args[1:])
                 self.stack[self.sp] = int(varnum, 2)
             else:
+                user_input = input("> ")
                 try:
-                    self.stack[self.sp] = int(input("> "))
+                    val = int(user_input)
                 except ValueError:
-                    print("Error: Must be an integer!")
-
+                    try:
+                        val = float(user_input)
+                        val = 0
+                    except ValueError:
+                        val = str(user_input)
+                        val = ord(val) if len(user_input) == 1 else 0
+                self.stack[self.sp] = val
+                
     def _op_flow(self, submode, args):
         """Execute a Flow Control operation
         """
@@ -154,7 +161,7 @@ class FizzBuzzLang:
             if args[1] not in self.labels:
                 print("Error: label does not exist!")
                 return
-                
+
             jump = (args[0] == "FIZZ" and self.stack[self.sp] != 0 or
                     args[0] == "BUZZ" and self.stack[self.sp] == 0 or
                     args[0] == "FIZZBUZZ")

@@ -91,8 +91,10 @@ The `BUZZ` keyword selects mode 2, which handles input and output.
 |:--------|:----------|:----------|
 | FIZZ    | FIZZ or BUZZ | Outputs the number at the current data-space location or storage location |
 | BUZZ    | FIZZ or BUZZ |Outputs the character representation of the number at the current location or storage location |
-| FIZZBUZZ | | Accepts input of an integer, and stores it at the current data-space location |
+| FIZZBUZZ | | Accepts input, and stores it at the current data-space location |
 | FIZZBUZZ | FIZZBUZZ | Allows input of a binary coded number, which is stored at the current data-space location |
+
+The `BUZZ FIZZBUZZ` command allows you to enter either an integer or a character. The decimal representation of the character will be stored. If you enter more than one character or a floating point number, then 0 will be stored in the current data-space pointer location.
 
 FizzBuzzLang allows entry of a binary coded number to be stored at the current data-space location. The format of the number is FIZZ for 0 and BUZZ for 1. So, to store the binary number 1001000 (which is 72 in decimal), you would use the following code: `BUZZ FIZZBUZZ FIZZBUZZ BUZZ FIZZ FIZZ BUZZ FIZZ FIZZ FIZZ`
 
