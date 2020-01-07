@@ -167,4 +167,9 @@ Bear in mind that the bits that should be working probably aren't - or work in u
 
 FizzBuzzLang is released under the GPL, which means you are encouraged to extend and modify the software. Personally, I really want you to! There is much left to implement, and I'd really like to see someone write an actual FizzBuzz implementation in FizzBuzzLang - or just see how complex we can get. I'd be interested to see if compact programs can be made.
 
+## Credits
+
+Yoni Lavi
+Matt Rudge
+___
 _Matt Rudge, January 2020_

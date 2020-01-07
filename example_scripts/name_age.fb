@@ -1,3 +1,8 @@
+//
+// name_age.fb : input the name either as single characters
+// or decimal ASCII values. Finish with a zero.
+// The programm will output: "your_name is your_age"
+//
 // store location
 FIZZ FIZZBUZZ FIZZ
 // name prompt
