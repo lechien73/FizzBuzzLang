@@ -2,7 +2,6 @@
 "Translates any text document into an .fb file"
 
 import sys
-from fizz_buzz_dict import LOOK_UP
 
 
 class Translator():
@@ -10,6 +9,7 @@ class Translator():
 
     ---
     Attributes:
+        look_up: dict -- self-populating dictionary of finary refs
         INPUT: str -- text content of file passed in CLI
         STORE_CHAR: str -- allows storing of character at data-space location
         MOVE_FORWARD: str -- move pointer forward one space in data-space
@@ -20,6 +20,7 @@ class Translator():
     """
 
     def __init__(self) -> None:
+        self.look_up = {}
         self.INPUT = self._retrieve_file()
         self.STORE_CHAR = "BUZZ FIZZBUZZ FIZZBUZZ "
         self.MOVE_FORWARD = "FIZZ FIZZ FIZZ"
@@ -77,8 +78,10 @@ FIZZBUZZ BUZZ FIZZ FIZZBUZZBUZZ"""
 
         fbl_text = []
         for char in self.INPUT:
-            # add check/create new function using binary lookup
-            char_finary = LOOK_UP[char]
+            self.look_up.setdefault(char, " ".join(
+                ["FIZZ" if char == "0" else "BUZZ" for char in bin(
+                    ord(char))[2:]]))
+            char_finary = self.look_up[char]
             fbl_text.append(self.STORE_CHAR + char_finary)
 
         return fbl_text
