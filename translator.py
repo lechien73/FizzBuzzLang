@@ -1,5 +1,14 @@
-#!/usr/bin/env python
-"Translates any text document into an .fb file"
+#!/usr/bin/env python3
+"""Translates any text document into an .fb file
+
+First CLI argument should be a text file to be converted.
+Print to `.fb` file extension with ` > output_file.fb`
+
+Example:
+
+./translator.py original_text_file.txt > new_fb_file.fb
+
+Check translation with ./code_runner.py new_fb_file.fb"""
 
 import sys
 
