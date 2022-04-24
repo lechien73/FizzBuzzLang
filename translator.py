@@ -87,10 +87,9 @@ FIZZBUZZ BUZZ FIZZ FIZZBUZZBUZZ"""
 
         fbl_text = []
         for char in self.INPUT:
-            self.look_up.setdefault(char, " ".join(
+            char_finary = self.look_up.setdefault(char, " ".join(
                 ["FIZZ" if char == "0" else "BUZZ" for char in bin(
                     ord(char))[2:]]))
-            char_finary = self.look_up[char]
             fbl_text.append(self.STORE_CHAR + char_finary)
 
         return fbl_text
