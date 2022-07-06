@@ -149,7 +149,7 @@ class FizzBuzzLang:
                         val = str(user_input)
                         val = ord(val) if len(user_input) == 1 else 0
                 self.stack[self.sp] = val
-                
+
     def _op_flow(self, submode, args):
         """Execute a Flow Control operation
         """
