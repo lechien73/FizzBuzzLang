@@ -1,6 +1,6 @@
 # FizzBuzzLang
 ## The FizzBuzz Esoteric Programming Language
-I firmly believe that most esoteric programming languages are the result of the affect of alcohol on the brains of carbon-based life forms. FizzBuzzLang is no different!
+I firmly believe that most esoteric programming languages are the result of the effect of alcohol on the brains of carbon-based life forms. FizzBuzzLang is no different!
 
 It's the language no one asked for, and never missed before it existed. But that didn't stop me creating it. Mainly because I dearly want a tech interview sometime, somewhere to go like this:
 
